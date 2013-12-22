@@ -64,6 +64,7 @@ fill() を実行する際、引数を与えることで動作の設定変更が�
 * Internet Explorer 7+
 * Google Chrome
 * Firefox
+
 他のブラウザは試していませんが、最新のブラウザなら問題ないはずです。
 
 
