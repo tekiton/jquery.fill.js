@@ -14,7 +14,8 @@
 			left      : null,
 			top       : null,
 			widthDiff : 0,
-			heightDiff: 0
+			heightDiff: 0,
+			resize    : true
 		}, conf || {});
 		
 		return this.each(function(){
@@ -90,7 +91,7 @@
 			recalc();
 			
 			$(window).load(function(){ recalc(); });
-			$(window).resize(function(){ recalc(); });
+			if(conf.resize) $(window).resize(function(){ recalc(); });
 			
 		});
 		
