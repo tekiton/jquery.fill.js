@@ -1,13 +1,15 @@
 /**
  * jQuery Fill
- * 
+ * https://github.com/tekiton/jquery.fill.js
+ *
  * @author tekiton
+ * @version 1.1.0
  * @license MIT License :)
  */
-(function($){
-	
+;(function($){
+
 	$.fn.fill = function(conf){
-		
+
 		conf = jQuery.extend({
 			target    : window,
 			size      : 'cover',
@@ -17,9 +19,9 @@
 			heightDiff: 0,
 			resize    : true
 		}, conf || {});
-		
+
 		return this.each(function(){
-			
+
 			var $self  = $(this);
 			var $wrap  = $(this).wrap('<div></div>').parent();
 			var recalc = function(){
@@ -58,12 +60,12 @@
 							height = targetHeight;
 						}
 					break;
-				
+
 					case 'width':
 						width  = targetWidth;
 						height = targetWidth * originalRatio;
 					break;
-				
+
 					case 'emulateMaxImage':
 						width  = targetWidth + 40;
 						height = $self.width(width).height();
@@ -71,30 +73,30 @@
 					break;
 				
 				}
-				
+
 				$self.css({
 					width : width,
 					height: height,
 					left  : conf.left==null? (targetWidth-width)/2   :conf.left,
 					top   : conf.top ==null? (targetHeight-height)/2 :conf.top
 				});
-				
+
 				$wrap.css({
 					width : targetWidth,
 					height: targetHeight
 				});
-				
+
 			};
-			
+
 			$wrap.css({ position:'absolute', overflow:'hidden' });
 			$self.css({ position:'absolute' });
 			recalc();
-			
+
 			$(window).load(function(){ recalc(); });
 			if(conf.resize) $(window).resize(function(){ recalc(); });
-			
+
 		});
-		
+
 	};
-	
+
 }).call(this, jQuery);
